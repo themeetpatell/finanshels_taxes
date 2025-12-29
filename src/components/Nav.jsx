@@ -18,10 +18,10 @@ const Nav = () => {
         <a href="/" className="nav-logo-modern">
           <img src={finanshelsLogo} alt="Finanshels" className="nav-logo-img" />
         </a>
-        
-        <a href="mailto:hello@finanshels.com" className="btn-nav-primary">
+
+        <a href="mailto:hello@finanshels.com?subject=Tax%20Consultation" className="btn-nav-primary">
           Get Free Consultation
-          </a>
+        </a>
       </div>
     </header>
   );

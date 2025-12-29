@@ -9,7 +9,7 @@ const FloatingContacts = () => {
     <div className="floating-contacts" aria-label="Contact options">
       <a
         className="contact-btn whatsapp"
-        href="https://wa.me/971504871229"
+        href="https://wa.me/971521549572?text=Hey%20I%20saw%20your%20ad%20about%20tax%20services.%20I%20want%20to%20know%20more."
         target="_blank"
         rel="noreferrer"
         aria-label="Chat on WhatsApp"
