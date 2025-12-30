@@ -100,44 +100,66 @@ const CTFilingPage = () => {
       <section className="ct-hero">
         <div className="hero-background-overlay"></div>
         <div className="container">
-          <div className="hero-content">
-            <div className="hero-badge">
-              <FiAlertCircle className="badge-icon" />
-              <span>Corporate Tax Filing Season Open</span>
+          <div className="hero-layout">
+            <div className="hero-content-column">
+              <div className="hero-badge">
+                <FiAlertCircle className="badge-icon" />
+                <span>Corporate Tax Filing Season Open</span>
+              </div>
+              
+              <h1 className="hero-title">
+                Corporate & Business Tax Preparation<br />
+                <span className="gradient-text">Made Simple</span>
+              </h1>
+              
+              <p className="hero-description">
+                Expert Corporate Tax preparation and filing for UAE businesses. Our FTA-compliant tax experts ensure accurate calculations, maximum deductions, and timely submissions — keeping you penalty-free.
+              </p>
+              
+              <div className="hero-features">
+                <div className="feature-item">
+                  <FiShield className="feature-icon" />
+                  <span>FTA-compliant tax experts</span>
+                </div>
+                <div className="feature-item">
+                  <FiCheckCircle className="feature-icon" />
+                  <span>Accurate tax calculations</span>
+                </div>
+                <div className="feature-item">
+                  <FiDollarSign className="feature-icon" />
+                  <span>Maximum deductions guaranteed</span>
+                </div>
+              </div>
+              
+              <div className="hero-ctas">
+                <a href="#file" className="btn-primary">
+                  <span>Get Started Today</span>
+                  <FiArrowRight className="btn-icon" />
+                </a>
+                <a href="https://wa.me/971521549572" className="btn-secondary" target="_blank" rel="noreferrer">
+                  Chat on WhatsApp
+                </a>
+              </div>
             </div>
             
-            <h1 className="hero-title">
-              Corporate & Business Tax Preparation<br />
-              <span className="gradient-text">Made Simple</span>
-            </h1>
-            
-            <p className="hero-description">
-              Expert Corporate Tax preparation and filing for UAE businesses. Our FTA-compliant tax experts ensure accurate calculations, maximum deductions, and timely submissions — keeping you penalty-free.
-            </p>
-            
-            <div className="hero-features">
-              <div className="feature-item">
-                <FiShield className="feature-icon" />
-                <span>FTA-compliant tax experts</span>
+            <div className="hero-form-column">
+              <div className="hero-form">
+                <h3 className="hero-form-title">Get Your Free Consultation</h3>
+                <p className="hero-form-subtitle">Start your registration process today</p>
+                <form className="hero-registration-form">
+                  <input type="text" placeholder="Your Name *" required />
+                  <input type="email" placeholder="Email Address *" required />
+                  <input type="tel" placeholder="Phone Number *" required />
+                  <input type="text" placeholder="Company Name" />
+                  <button type="submit" className="hero-form-submit">
+                    <span>Get Free Consultation</span>
+                    <FiArrowRight className="btn-icon" />
+                  </button>
+                  <p className="hero-form-disclaimer">
+                    By submitting, you agree to receive communications from Finanshels. Your data is secure and will never be shared.
+                  </p>
+                </form>
               </div>
-              <div className="feature-item">
-                <FiCheckCircle className="feature-icon" />
-                <span>Accurate tax calculations</span>
-              </div>
-              <div className="feature-item">
-                <FiDollarSign className="feature-icon" />
-                <span>Maximum deductions guaranteed</span>
-              </div>
-            </div>
-            
-            <div className="hero-ctas">
-              <a href="#file" className="btn-primary">
-                <span>Get Started Today</span>
-                <FiArrowRight className="btn-icon" />
-              </a>
-              <a href="https://wa.me/971521549572" className="btn-secondary" target="_blank" rel="noreferrer">
-                Chat on WhatsApp
-              </a>
             </div>
             
             <div className="hero-trust">
@@ -246,18 +268,78 @@ const CTFilingPage = () => {
           <div className="section-header">
             <span className="section-badge">TAX PREPARATION PACKAGES</span>
             <h2 className="section-title">
-              Expert Tax Preparation for Every <span className="highlight">Business Size</span>
+              Affordable Plans for Every <span className="highlight">Business Size</span>
             </h2>
             <p className="section-description">
-              Transparent pricing. Maximum deductions. 100% FTA compliance guaranteed.
+              Transparent pricing. No hidden fees. 100% FTA approval guaranteed.
             </p>
           </div>
           
           <div className="pricing-alert">
             <FiAlertCircle className="alert-icon" />
-            <div>
-              <span>Corporate Tax Filing Deadline Approaching</span>
-              <p>At Finanshels, we explore every possible way to maximize your benefits for Corporate Tax filing, from Claiming Small Business Relief to ensuring you're fully compliant and optimized</p>
+            <div className="alert-content">
+              <span className="alert-title">Corporate Tax Filing Deadline Approaching</span>
+              <p className="alert-text">Avoid penalties up to AED 10,000. Register before the deadline.</p>
+            </div>
+          </div>
+          
+          <div className="pricing-container">
+            <div className="pricing-main-card">
+              <div className="popular-badge">MOST POPULAR</div>
+              
+              <div className="card-content">
+                <h3 className="package-name">Corporate Tax Registration Package</h3>
+                
+                <div className="price-section">
+                  <span className="original-price">AED 599</span>
+                  <div className="current-price-block">
+                    <span className="current-price">AED 299</span>
+                    <span className="price-suffix">only</span>
+                  </div>
+                  <div className="price-accent-line"></div>
+                </div>
+                
+                <div className="divider-line">
+                  <div className="divider-accent"></div>
+                </div>
+                
+                <div className="services-section">
+                  <p className="services-heading">Our service covers:</p>
+                  <div className="services-accent"></div>
+                  
+                  <div className="services-list">
+                    <div className="service-item">
+                      <div className="service-dot"></div>
+                      <span>CT Registration</span>
+                    </div>
+                    <div className="service-item">
+                      <div className="service-dot"></div>
+                      <span>SMB Relief Consultation</span>
+                    </div>
+                    <div className="service-item">
+                      <div className="service-dot"></div>
+                      <span>Corporate Tax Number</span>
+                    </div>
+                    <div className="service-item">
+                      <div className="service-dot"></div>
+                      <span>Compliance Checklist</span>
+                    </div>
+                    <div className="service-item">
+                      <div className="service-dot"></div>
+                      <span>Compliance documentation</span>
+                    </div>
+                    <div className="service-item">
+                      <div className="service-dot"></div>
+                      <span>30 mins Free Tax Consultation</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <a href="#file" className="register-button">
+                  Register Now
+                  <FiArrowRight />
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -93,6 +93,26 @@ export const taxPages = {
         question: 'Do you cover both mainland and free zones?',
         answer:
           'We support all major free zones (DMCC, JAFZA, IFZA, RAKEZ, ADGM, DIFC) and mainland entities across the UAE.'
+      },
+      {
+        question: 'What happens if we miss a deadline?',
+        answer:
+          'We triage the exposure, prepare clarifications for the FTA if appropriate, and submit filings with supporting evidence to reduce penalties and avoid repeat issues.'
+      },
+      {
+        question: 'Do you help with EmaraTax access and setup?',
+        answer:
+          'Yes. We set up EmaraTax, add authorized representatives, verify bank details, and share a handover pack so your team can access everything securely.'
+      },
+      {
+        question: 'How do you protect our data?',
+        answer:
+          'We use secure intake links, limit access to your assigned pod, and maintain an evidence pack that is auditable and encrypted at rest.'
+      },
+      {
+        question: 'Can you manage ongoing reminders?',
+        answer:
+          'We maintain a compliance calendar with reminders for registrations, filings, and payments, and route urgent notices to duty managers 7 days a week.'
       }
     ]
   },
