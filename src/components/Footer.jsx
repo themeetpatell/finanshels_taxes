@@ -33,7 +33,7 @@ const Footer = () => {
             </div>
             <div className="footer-column">
               <h4 className="footer-heading">Company</h4>
-              <a href="mailto:hello@finanshels.com" className="footer-link">Contact Us</a>
+              <a href="mailto:connect@finanshels.com" className="footer-link">Contact Us</a>
               <a href="https://wa.me/971521549572?text=I%20need%20tax%20support." className="footer-link">WhatsApp</a>
             </div>
           </div>
@@ -41,7 +41,7 @@ const Footer = () => {
           <div className="footer-cta-modern">
             <h4 className="footer-heading">Ready to get started?</h4>
             <p className="footer-cta-text">Tell us where you operate and we&apos;ll match you with the right finance pod.</p>
-            <a href="mailto:hello@finanshels.com" className="btn-footer-cta">
+            <a href="mailto:connect@finanshels.com" className="btn-footer-cta">
               Book Strategy Call
             </a>
           </div>

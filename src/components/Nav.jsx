@@ -19,7 +19,7 @@ const Nav = () => {
           <img src={finanshelsLogo} alt="Finanshels" className="nav-logo-img" />
         </a>
 
-        <a href="mailto:hello@finanshels.com?subject=Tax%20Consultation" className="btn-nav-primary">
+        <a href="mailto:connect@finanshels.com?subject=Tax%20Consultation" className="btn-nav-primary">
           Get Free Consultation
         </a>
       </div>

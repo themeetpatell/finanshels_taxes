@@ -21,7 +21,7 @@ export const taxPages = {
     ],
     primaryCta: {
       label: 'Book tax consult',
-      href: 'mailto:hello@finanshels.com?subject=Tax%20services%20consult&body=Tell%20us%20about%20your%20entity%20and%20timeline.'
+      href: 'mailto:connect@finanshels.com?subject=Tax%20services%20consult&body=Tell%20us%20about%20your%20entity%20and%20timeline.'
     },
     secondaryCta: {
       label: 'Chat on WhatsApp',
@@ -138,7 +138,7 @@ export const taxPages = {
     ],
     primaryCta: {
       label: 'Start my registration',
-      href: 'mailto:hello@finanshels.com?subject=Corporate%20Tax%20Registration&body=Share%20your%20license%20details%20and%20timeline.'
+      href: 'mailto:connect@finanshels.com?subject=Corporate%20Tax%20Registration&body=Share%20your%20license%20details%20and%20timeline.'
     },
     secondaryCta: {
       label: 'WhatsApp the tax desk',
@@ -219,7 +219,7 @@ export const taxPages = {
     ],
     primaryCta: {
       label: 'Schedule a filing review',
-      href: 'mailto:hello@finanshels.com?subject=Corporate%20Tax%20Filing&body=Share%20your%20financial%20year-end%20and%20revenue.'
+      href: 'mailto:connect@finanshels.com?subject=Corporate%20Tax%20Filing&body=Share%20your%20financial%20year-end%20and%20revenue.'
     },
     secondaryCta: {
       label: 'Talk to a tax lead',
@@ -276,7 +276,7 @@ export const taxPages = {
     ],
     primaryCta: {
       label: 'Start VAT registration',
-      href: 'mailto:hello@finanshels.com?subject=VAT%20Registration&body=Share%20your%20revenue%20and%20industry%20to%20confirm%20eligibility.'
+      href: 'mailto:connect@finanshels.com?subject=VAT%20Registration&body=Share%20your%20revenue%20and%20industry%20to%20confirm%20eligibility.'
     },
     secondaryCta: {
       label: 'Chat with VAT lead',
@@ -333,7 +333,7 @@ export const taxPages = {
     ],
     primaryCta: {
       label: 'Book a VAT filing slot',
-      href: 'mailto:hello@finanshels.com?subject=VAT%20Filing&body=Share%20your%20next%20VAT%20period%20and%20revenue%20range.'
+      href: 'mailto:connect@finanshels.com?subject=VAT%20Filing&body=Share%20your%20next%20VAT%20period%20and%20revenue%20range.'
     },
     secondaryCta: {
       label: 'Talk to VAT team',
@@ -390,7 +390,7 @@ export const taxPages = {
     ],
     primaryCta: {
       label: 'Fix my FTA issue',
-      href: 'mailto:hello@finanshels.com?subject=FTA%20Amendment&body=Describe%20the%20FTA%20issue%20and%20any%20deadlines.'
+      href: 'mailto:connect@finanshels.com?subject=FTA%20Amendment&body=Describe%20the%20FTA%20issue%20and%20any%20deadlines.'
     },
     secondaryCta: {
       label: 'Speak to an FTA specialist',

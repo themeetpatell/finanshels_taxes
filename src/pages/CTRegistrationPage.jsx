@@ -10,13 +10,39 @@ import {
   FiStar,
   FiFileText,
   FiAward,
-  FiChevronDown
+  FiChevronDown,
+  FiChevronLeft,
+  FiChevronRight,
+  FiMessageCircle
 } from 'react-icons/fi';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './CTRegistrationPage.css';
 
 const CTRegistrationPage = () => {
   const [openFaq, setOpenFaq] = useState(null);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [cardWidth, setCardWidth] = useState(408); // 380px + 28px gap
+  const [visibleCards, setVisibleCards] = useState(3); // Number of cards visible at once
+  
+  useEffect(() => {
+    const updateCardWidth = () => {
+      if (window.innerWidth <= 768) {
+        setCardWidth(348); // 320px + 28px gap for mobile
+        setVisibleCards(1);
+      } else if (window.innerWidth <= 1200) {
+        setCardWidth(408); // 380px + 28px gap for tablet
+        setVisibleCards(2);
+      } else {
+        setCardWidth(408); // 380px + 28px gap for desktop
+        setVisibleCards(3);
+      }
+    };
+    
+    updateCardWidth();
+    window.addEventListener('resize', updateCardWidth);
+    
+    return () => window.removeEventListener('resize', updateCardWidth);
+  }, []);
   const clientLogos = [
     { src: '/clients/Binary.png', alt: 'Binary' },
     { src: '/clients/actualize.png', alt: 'Actualize' },
@@ -185,19 +211,18 @@ const CTRegistrationPage = () => {
               <div className="hero-form">
                 <h3 className="hero-form-title">Get Your Free Consultation</h3>
                 <p className="hero-form-subtitle">Start your registration process today</p>
-                <form className="hero-registration-form">
-                  <input type="text" placeholder="Your Name *" required />
-                  <input type="email" placeholder="Email Address *" required />
-                  <input type="tel" placeholder="Phone Number *" required />
-                  <input type="text" placeholder="Company Name" />
-                  <button type="submit" className="hero-form-submit">
-                    <span>Get Free Consultation</span>
-                    <FiArrowRight className="btn-icon" />
-                  </button>
-                  <p className="hero-form-disclaimer">
-                    By submitting, you agree to receive communications from Finanshels. Your data is secure and will never be shared.
-                  </p>
-                </form>
+                {/* Zoho Form Embed */}
+                <div className="zoho-form-container">
+                  <iframe
+                    aria-label='CT Registration Form'
+                    frameBorder='0'
+                    style={{ height: '500px', width: '100%', border: 'none' }}
+                    src='https://forms.zohopublic.com/YOUR_FORM_URL'
+                  ></iframe>
+                </div>
+                <p className="hero-form-disclaimer">
+                  By submitting, you agree to receive communications from Finanshels. Your data is secure and will never be shared.
+                </p>
               </div>
             </div>
           </div>
@@ -206,8 +231,8 @@ const CTRegistrationPage = () => {
             <p className="trust-label">Trusted by 5,000+ businesses in the UAE</p>
             <div className="logo-marquee">
               <div className="logo-track">
-                {[...clientLogos, ...clientLogos].map((logo, index) => (
-                  <div key={`${logo.alt}-${index}`} className="logo-item">
+                {clientLogos.map((logo, index) => (
+                  <div key={logo.alt} className="logo-item">
                     <img src={logo.src} alt={`${logo.alt} logo`} className="logo-image" loading="lazy" />
                   </div>
                 ))}
@@ -244,40 +269,119 @@ const CTRegistrationPage = () => {
         </div>
       </section>
 
-      {/* Solution Section */}
+      {/* Solution Section - 4 Step Process */}
       <section className="solution-section">
         <div className="container">
           <div className="section-header">
-            <span className="section-badge">OUR SOLUTION</span>
+            <span className="section-badge">HOW IT WORKS</span>
             <h2 className="section-title">
-              End-to-End Tax <span className="highlight">Registration</span>
+              Simple <span className="highlight">4-Step Process</span>
             </h2>
             <p className="section-description">
-              From Corporate Tax registration to ongoing compliance, our FTA-compliant tax agents handle everything — so you stay compliant and focus on growing your business.
+              From consultation to registration, we handle everything — so you stay compliant and focus on growing your business.
             </p>
           </div>
           
           <div className="solution-layout">
-            <div className="solution-grid">
-              {solutions.map((solution, index) => (
-                <div key={index} className="solution-card">
-                  <div className="solution-icon-wrapper">
-                    <div className="solution-icon">{solution.icon}</div>
+            {/* 4-Step Process */}
+            <div className="process-column">
+              <div className="process-grid">
+                <div className="process-step">
+                  <div className="step-number-badge">1</div>
+                  <div className="step-content">
+                    <h3 className="step-title">Free Consultation</h3>
+                    <p className="step-description">Submit your details and get a free consultation with our FTA-registered tax agents with sector specialists.</p>
+                    <div className="step-icon">
+                      <FiUsers />
+                    </div>
                   </div>
-                  <h3 className="solution-title">{solution.title}</h3>
-                  <p className="solution-description">{solution.description}</p>
                 </div>
-              ))}
+                
+                <div className="process-step">
+                  <div className="step-number-badge">2</div>
+                  <div className="step-content">
+                    <h3 className="step-title">Document Preparation</h3>
+                    <p className="step-description">We review your documents, ensure compliance, and prepare your complete FTA registration application.</p>
+                    <div className="step-icon">
+                      <FiFileText />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="process-step">
+                  <div className="step-number-badge">3</div>
+                  <div className="step-content">
+                    <h3 className="step-title">FTA Registration</h3>
+                    <p className="step-description">We submit your application to the FTA portal and handle all communication with authorities.</p>
+                    <div className="step-icon">
+                      <FiShield />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="process-step">
+                  <div className="step-number-badge">4</div>
+                  <div className="step-content">
+                    <h3 className="step-title">Ongoing Compliance</h3>
+                    <p className="step-description">Receive your TRN within 48 hours. Get ongoing support with corporate tax + VAT in one recurring pod.</p>
+                    <div className="step-icon">
+                      <FiCheckCircle />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            
-            <div className="solution-visual">
-              <div className="certificate-image-wrapper">
-                <img 
-                  src="/CTCertificate.png" 
-                  alt="UAE Corporate Tax Registration Certificate" 
-                  className="certificate-image"
-                  loading="lazy"
-                />
+
+            {/* Track Record Card */}
+            <div className="track-record-column">
+              <div className="track-record-card">
+                <div className="track-record-badge">
+                  <FiTrendingUp className="badge-icon" />
+                  <span>Our Track Record</span>
+                </div>
+                
+                <div className="track-record-stats">
+                  <div className="stat-item">
+                    <div className="stat-number">2,400+</div>
+                    <div className="stat-label">Entities registered for corporate tax & VAT</div>
+                  </div>
+                  <div className="stat-divider"></div>
+                  <div className="stat-item">
+                    <div className="stat-number">99.6%</div>
+                    <div className="stat-label">On-time filing rate across UAE</div>
+                  </div>
+                  <div className="stat-divider"></div>
+                  <div className="stat-item">
+                    <div className="stat-number">18 hrs</div>
+                    <div className="stat-label">Average response time to FTA notices</div>
+                  </div>
+                </div>
+
+                <div className="track-divider"></div>
+
+                {/* What's Included */}
+                <div className="whats-included-content">
+                  <h3 className="whats-included-title">WHAT'S INCLUDED:</h3>
+                  <div className="included-items">
+                    <div className="included-item">
+                      <FiCheckCircle className="check-icon" />
+                      <span>FTA-registered tax agents with sector specialists</span>
+                    </div>
+                    <div className="included-item">
+                      <FiCheckCircle className="check-icon" />
+                      <span>Corporate tax + VAT in one recurring pod</span>
+                    </div>
+                    <div className="included-item">
+                      <FiCheckCircle className="check-icon" />
+                      <span>Penalty watch, reminders, and document vault included</span>
+                    </div>
+                  </div>
+                  
+                  <a href="#register" className="get-started-btn">
+                    <span>Get Started</span>
+                    <FiArrowRight className="btn-icon" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -287,21 +391,23 @@ const CTRegistrationPage = () => {
       {/* Pricing Section */}
       <section className="pricing-section">
         <div className="container">
-          <div className="section-header">
-            <span className="section-badge">TAX REGISTRATION PACKAGES</span>
-            <h2 className="section-title">
-              Affordable Plans for Every <span className="highlight">Business Size</span>
-            </h2>
-            <p className="section-description">
-              Transparent pricing. No hidden fees. 100% FTA approval guaranteed.
-            </p>
-          </div>
-          
-          <div className="pricing-alert">
-            <FiAlertCircle className="alert-icon" />
-            <div className="alert-content">
-              <span className="alert-title">Corporate Tax Registration Deadline Approaching</span>
-              <p className="alert-text">Avoid penalties up to AED 10,000. Register before the deadline.</p>
+          <div className="pricing-content-left">
+            <div className="section-header">
+              <span className="section-badge">TAX REGISTRATION PACKAGES</span>
+              <h2 className="section-title">
+                Affordable Plans for Every <span className="highlight">Business Size</span>
+              </h2>
+              <p className="section-description">
+                Transparent pricing. No hidden fees. 100% FTA approval guaranteed.
+              </p>
+            </div>
+            
+            <div className="pricing-alert">
+              <FiAlertCircle className="alert-icon" />
+              <div className="alert-content">
+                <span className="alert-title">Corporate Tax Registration Deadline Approaching</span>
+                <p className="alert-text">Avoid penalties up to AED 10,000. Register before the deadline.</p>
+              </div>
             </div>
           </div>
           
@@ -421,50 +527,90 @@ const CTRegistrationPage = () => {
             </p>
           </div>
           
-          <div className="testimonials-scroll-container">
-            <div className="testimonials-scroll">
-              {[...testimonials, ...testimonials, ...testimonials].map((testimonial, index) => (
-                <div key={index} className="testimonial-card">
-                  <div className="testimonial-stars">
-                    {[...Array(5)].map((_, i) => (
-                      <FiStar key={i} className="star-icon" fill="#f16610" stroke="#f16610" />
-                    ))}
-                  </div>
-                  <p className="testimonial-quote">"{testimonial.quote}"</p>
-                  <div className="testimonial-author">
-                    <div className="author-avatar">
-                      {testimonial.avatar ? (
-                        <img src={testimonial.avatar} alt={testimonial.name} />
-                      ) : (
-                        <span>{testimonial.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}</span>
-                      )}
+          <div className="testimonials-carousel-container">
+            <button 
+              className="testimonial-nav-btn testimonial-nav-prev"
+              onClick={() => setCurrentTestimonial((prev) => {
+                const newIndex = prev - visibleCards;
+                return newIndex < 0 ? Math.max(0, testimonials.length - visibleCards) : newIndex;
+              })}
+              aria-label="Previous testimonial"
+              disabled={currentTestimonial === 0}
+            >
+              <FiChevronLeft />
+            </button>
+            
+            <div className="testimonials-carousel">
+              <div 
+                className="testimonials-track"
+                style={{ transform: `translateX(-${currentTestimonial * cardWidth}px)` }}
+              >
+                {testimonials.map((testimonial, index) => (
+                  <div key={index} className="testimonial-card">
+                    <div className="testimonial-stars">
+                      {[...Array(5)].map((_, i) => (
+                        <FiStar key={i} className="star-icon" fill="#f16610" stroke="#f16610" />
+                      ))}
                     </div>
-                    <div className="author-info">
-                      <div className="author-name">{testimonial.name}</div>
-                      <div className="author-role">{testimonial.role}</div>
+                    <p className="testimonial-quote">"{testimonial.quote}"</p>
+                    <div className="testimonial-author">
+                      <div className="author-avatar">
+                        {testimonial.avatar ? (
+                          <img src={testimonial.avatar} alt={testimonial.name} />
+                        ) : (
+                          <span>{testimonial.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}</span>
+                        )}
+                      </div>
+                      <div className="author-info">
+                        <div className="author-name">{testimonial.name}</div>
+                        <div className="author-role">{testimonial.role}</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+            
+            <button 
+              className="testimonial-nav-btn testimonial-nav-next"
+              onClick={() => setCurrentTestimonial((prev) => {
+                const newIndex = prev + visibleCards;
+                const maxIndex = testimonials.length - visibleCards;
+                return newIndex > maxIndex ? 0 : newIndex;
+              })}
+              aria-label="Next testimonial"
+              disabled={currentTestimonial >= testimonials.length - visibleCards}
+            >
+              <FiChevronRight />
+            </button>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ Section - 2 Column Grid */}
       <section className="faq-section">
         <div className="container">
-          <div className="section-header">
-            <span className="section-badge">FAQ</span>
-            <h2 className="section-title">
-              Tax Registration <span className="highlight">FAQs</span>
-            </h2>
-            <p className="section-description">
-              Everything you need to know about UAE Corporate Tax registration.
-            </p>
-          </div>
-          
-          <div className="faq-list">
+          <div className="faq-grid-layout">
+            {/* Left Side - Header */}
+            <div className="faq-header-column">
+              <span className="section-badge">FAQ</span>
+              <h2 className="section-title">
+                Tax Registration <span className="highlight">FAQs</span>
+              </h2>
+              <p className="section-description">
+                Everything you need to know about UAE Corporate Tax registration.
+              </p>
+              <div className="faq-contact-box">
+                <p className="faq-contact-text">Still have questions?</p>
+                <a href="mailto:connect@finanshels.com" className="faq-contact-link">
+                  <FiMessageCircle />
+                  <span>connect@finanshels.com</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Right Side - FAQ List */}
+            <div className="faq-list">
             <div 
               className={`faq-item ${openFaq === 0 ? 'faq-open' : ''}`}
               onClick={() => setOpenFaq(openFaq === 0 ? null : 0)}
@@ -554,6 +700,7 @@ const CTRegistrationPage = () => {
                 </p>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </section>
