@@ -1744,9 +1744,9 @@ body {
 .contact-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.625rem;
-  padding: 0.625rem 1rem;
-  border-radius: 50px;
+  gap: 0;
+  padding: 0;
+  border-radius: 50%;
   background: white;
   border: 2px solid;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1754,7 +1754,9 @@ body {
   font-weight: 600;
   font-size: 0.875rem;
   position: relative;
-  min-width: 130px;
+  min-width: 56px;
+  width: 56px;
+  height: 56px;
   justify-content: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
@@ -1787,11 +1789,11 @@ body {
 }
 
 .contact-icon {
-  font-size: 1.125rem;
+  font-size: 1.375rem;
 }
 
 .contact-label {
-  font-weight: 600;
+  display: none;
 }
 
 @media (max-width: 1024px) {
@@ -1800,9 +1802,9 @@ body {
   }
 
   .contact-btn {
-    min-width: 120px;
-    padding: 0.5rem 0.875rem;
-    font-size: 0.8rem;
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
   }
 }
 
@@ -1817,13 +1819,9 @@ body {
   }
 
   .contact-btn {
-    padding: 0;
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    min-width: 56px;
-    justify-content: center;
-    align-items: center;
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
   }
 
   .contact-btn .contact-label {
@@ -1831,8 +1829,7 @@ body {
   }
 
   .contact-icon {
-    font-size: 1.375rem;
-    margin: 0;
+    font-size: 1.25rem;
   }
 
   .contact-btn:hover {

@@ -496,7 +496,7 @@ if( document.readyState == "complete" ){
                   encType="multipart/form-data"
                 >
                   <input type="hidden" name="zf_referrer_name" value="" />
-                  <input type="hidden" name="zf_redirect_url" value={`${window.location.origin}/thank-you`} />
+                  <input type="hidden" name="zf_redirect_url" value={`${window.location.origin}/#/thank-you`} />
                   <input type="hidden" name="zc_gad" value="" />
                   <input type="hidden" name="utm_source" value="" />
                   <input type="hidden" name="utm_medium" value="" />
@@ -891,7 +891,7 @@ if( document.readyState == "complete" ){
                   encType="multipart/form-data"
                 >
                   <input type="hidden" name="zf_referrer_name" value="" />
-                  <input type="hidden" name="zf_redirect_url" value={`${window.location.origin}/thank-you`} />
+                  <input type="hidden" name="zf_redirect_url" value={`${window.location.origin}/#/thank-you`} />
                   <input type="hidden" name="zc_gad" value="" />
                   <input type="hidden" name="utm_source" value="" />
                   <input type="hidden" name="utm_medium" value="" />

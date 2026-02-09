@@ -18,10 +18,10 @@ const ThankYouPage = () => {
               Chat on WhatsApp
               <FiArrowRight className="thank-you-arrow" />
             </a>
-            <a className="thank-you-secondary" href="/corporate-tax-filing">
+            <a className="thank-you-secondary" href="/#/corporate-tax-filing">
               Back to Corporate Tax Filing
             </a>
-            <a className="thank-you-secondary" href="/corporate-tax-registration">
+            <a className="thank-you-secondary" href="/#/corporate-tax-registration">
               Back to Corporate Tax Registration
             </a>
           </div>
