@@ -13,8 +13,9 @@ const Layout = ({ children }) => {
 
   return (
     <div className="app-shell">
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <Nav />
-      <main>{children}</main>
+      <main id="main-content">{children}</main>
       <FloatingContacts />
       <Footer />
     </div>

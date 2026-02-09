@@ -15,7 +15,7 @@ const Nav = () => {
   return (
     <header className={`nav-modern ${isScrolled ? 'nav-scrolled' : ''}`}>
       <div className="nav-container-modern">
-        <a href="/" className="nav-logo-modern">
+        <a href="/corporate-tax-filing" className="nav-logo-modern">
           <img src={finanshelsLogo} alt="Finanshels" className="nav-logo-img" />
         </a>
 

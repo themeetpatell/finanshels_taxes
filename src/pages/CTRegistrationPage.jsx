@@ -11,38 +11,307 @@ import {
   FiFileText,
   FiAward,
   FiChevronDown,
-  FiChevronLeft,
-  FiChevronRight,
   FiMessageCircle
 } from 'react-icons/fi';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './CTRegistrationPage.css';
 
 const CTRegistrationPage = () => {
   const [openFaq, setOpenFaq] = useState(null);
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [cardWidth, setCardWidth] = useState(408); // 380px + 28px gap
-  const [visibleCards, setVisibleCards] = useState(3); // Number of cards visible at once
-  
+
   useEffect(() => {
-    const updateCardWidth = () => {
-      if (window.innerWidth <= 768) {
-        setCardWidth(348); // 320px + 28px gap for mobile
-        setVisibleCards(1);
-      } else if (window.innerWidth <= 1200) {
-        setCardWidth(408); // 380px + 28px gap for tablet
-        setVisibleCards(2);
-      } else {
-        setCardWidth(408); // 380px + 28px gap for desktop
-        setVisibleCards(3);
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.text = `function ZFAdvLead(){}
+ZFAdvLead.utmPValObj = ZFAdvLead.utmPValObj || {};
+
+ZFAdvLead.utmPNameArr = new Array('utm_source','utm_medium','utm_campaign','utm_term','utm_content');ZFAdvLead.utmcustPNameArr = new Array();ZFAdvLead.isSameDomain = false;
+
+ZFAdvLead.prototype.zfautm_sC = function( paramName,path,domain,secure ){
+  var value = ZFAdvLead.utmPValObj[paramName];
+  if ( typeof value !== "undefined" && value !== null ){
+    var cookieStr = paramName + "=" + encodeURIComponent( value );
+    var exdate=new Date();
+    exdate.setDate(exdate.getDate()+7);
+    cookieStr += "; expires=" + exdate.toGMTString();
+    cookieStr += "; path=/";
+    if ( domain ) {
+      cookieStr += "; domain=" + encodeURIComponent( domain );
+    }
+    if ( secure ) {
+      cookieStr += "; secure";
+    }
+    document.cookie = cookieStr;
+  }
+};
+ZFAdvLead.prototype.zfautm_ini = function (){
+  this.zfautm_bscPCap();
+  var url_search = document.location.search;
+  for (var i = 0; i < ZFAdvLead.utmcustPNameArr.length ; i ++){
+    var zf_pN = ZFAdvLead.utmcustPNameArr[i];
+    var zf_pV;
+    if ( zf_pN == 'referrername' ) {
+      zf_pV = ( document.URL || '' ).slice( 0, 1500 );
+    } else {
+      zf_pV = this.zfautm_gP(url_search, zf_pN);
+      if (zf_pV == undefined || zf_pV == ''){
+          zf_pV = this.zfautm_gC(zf_pN);
       }
+    }
+    if ( typeof zf_pV !== "undefined" && zf_pV !== null & zf_pV != "" ) {
+      ZFAdvLead.utmPValObj[ zf_pN ] = zf_pV;
+    }
+  }
+  for (var pkey in ZFAdvLead.utmPValObj) {
+    this.zfautm_sC(pkey);
+  }
+};
+ZFAdvLead.prototype.zfautm_bscPCap = function () {
+  var trafSrc = this.zfautm_calcTrafSrc();
+  if ( trafSrc.source != "" ) {
+    ZFAdvLead.utmPValObj.utm_source = trafSrc.source;
+  }
+  if ( trafSrc.medium != "" ) {
+    ZFAdvLead.utmPValObj.utm_medium = trafSrc.medium;
+  }
+  if ( trafSrc.campaign != "" ) {
+    ZFAdvLead.utmPValObj.utm_campaign = trafSrc.campaign;
+  }
+  if ( trafSrc.term != "" ) {
+    ZFAdvLead.utmPValObj.utm_term = trafSrc.term;
+  }
+  if ( trafSrc.content != "" ) {
+    ZFAdvLead.utmPValObj.utm_content = trafSrc.content;
+  }
+}
+ZFAdvLead.prototype.zfautm_calcTrafSrc = function() {
+  var u1='', u2='', u3='', u4='', u5='';
+  var search_engines = [['bing', 'q'], ['google', 'q'], ['yahoo', 'q'], ['baidu', 'q'], ['yandex', 'q'], ['ask', 'q']];
+  var ref = document.referrer;
+  ref = ref.substr(ref.indexOf('//')+2);
+  ref_domain = ref;
+  ref_path = '/';
+  ref_search = '';
+
+  var url_search = document.location.search;
+  if(url_search.indexOf('utm_source') > -1 || url_search.indexOf('utm_medium') > -1 || url_search.indexOf('utm_campaign') > -1 || url_search.indexOf('utm_term') > -1 || url_search.indexOf('utm_content') > -1) {
+    u1 = this.zfautm_gP(url_search, 'utm_source');
+    u2 = this.zfautm_gP(url_search, 'utm_medium');
+    u3 = this.zfautm_gP(url_search, 'utm_campaign');
+    u4 = this.zfautm_gP(url_search, 'utm_term');
+    u5 = this.zfautm_gP(url_search, 'utm_content');
+  } else if ( this.zfautm_gP(url_search, 'gclid')) {
+    u1 = 'Google Ads';
+    u2 = 'cpc';
+    u3 = '(not set)';
+    if ( !ZFAdvLead.utmcustPNameArr.includes('gclid') ) {
+      ZFAdvLead.utmcustPNameArr.push('gclid');
+    }
+  } else if(ref) {
+    var r_u1 = this.zfautm_gC('utm_source');
+    var r_u2 = this.zfautm_gC('utm_medium');
+    var r_u3 = this.zfautm_gC('utm_campaign');
+    var r_u4 = this.zfautm_gC('utm_term');
+    var r_u5 = this.zfautm_gC('utm_content');
+    if ( typeof r_u1 === "undefined" && typeof r_u2 === "undefined" && typeof r_u3 === "undefined" && typeof r_u4 === "undefined" && typeof r_u5 === "undefined") {
+      if (ref.indexOf('/') > -1) {
+        ref_domain = ref.substr(0,ref.indexOf('/'));
+        ref_path = ref.substr(ref.indexOf('/'));
+        if (ref_path.indexOf('?') > -1) {
+          ref_search = ref_path.substr(ref_path.indexOf('?'));
+          ref_path = ref_path.substr(0, ref_path.indexOf('?'));
+        }
+      }
+      u2 = 'referral';
+      u1 = ref_domain;
+      for (var i=0; i<search_engines.length; i++){
+        if(ref_domain.indexOf(search_engines[i][0]) > -1){
+          u2 = 'organic';
+          u1 = search_engines[i][0];
+          u4 = this.zfautm_gP(ref_search, search_engines[i][1]) || '(not provided)';
+          break;
+        }
+      }
+    } else {
+      if ( typeof r_u1 !== "undefined" ) {
+        u1 = r_u1;
+      }
+      if ( typeof r_u2 !== "undefined" ) {
+          u2 = r_u2;
+      }
+      if ( typeof r_u3 !== "undefined" ) {
+        u3 = r_u3;
+      }
+      if ( typeof r_u4 !== "undefined" ) {
+        u4 = r_u4;
+      }
+      if ( typeof r_u5 !== "undefined" ) {
+        u5 = r_u5;
+      }
+    }
+  } else {
+    var r_u1 = this.zfautm_gC('utm_source');
+    var r_u2 = this.zfautm_gC('utm_medium');
+    var r_u3 = this.zfautm_gC('utm_campaign');
+    var r_u4 = this.zfautm_gC('utm_term');
+    var r_u5 = this.zfautm_gC('utm_content');
+    if ( typeof r_u1 === "undefined" && typeof r_u2 === "undefined" && typeof r_u3 === "undefined" && typeof r_u4 === "undefined" && typeof r_u5 === "undefined") {
+      var locRef = document.URL;
+      locRef = locRef.substr(locRef.indexOf('//')+2);
+      if (locRef.indexOf('/') > -1) {
+        locRef = locRef.substr(0,locRef.indexOf('/'));
+      }
+      u1 = locRef;
+      u2 = 'referral';
+    } else {
+      if ( typeof r_u1 !== "undefined" ) {
+        u1 = r_u1;
+      }
+      if ( typeof r_u2 !== "undefined" ) {
+        u2 = r_u2;
+      }
+      if ( typeof r_u3 !== "undefined" ) {
+        u3 = r_u3;
+      }
+      if ( typeof r_u4 !== "undefined" ) {
+        u4 = r_u4;
+      }
+      if ( typeof r_u5 !== "undefined" ) {
+        u5 = r_u5;
+      }
+    }
+  }
+  return {
+    'source'  : u1,
+    'medium'  : u2,
+    'campaign': u3,
+    'term'    : u4,
+    'content' : u5
+  };
+}
+ZFAdvLead.prototype.zfautm_gP = function(s, q) {
+  try{
+      var match = s.match('[?&]' + q + '=([^&]+)');
+      if ( match ) {
+        if ( match[1].length > 199 ) {
+          var raw = decodeURIComponent(match[1]);
+          raw = raw.replace(/[^A-Za-z0-9_]/g, '');
+          return raw.slice( 0, 199 );
+        } else {
+          return decodeURIComponent(match[1]);
+        }
+
+      } else {
+        return '';
+      }
+  } catch(e){
+    return '';
+  }
+}
+ZFAdvLead.prototype.zfautm_gC = function( cookieName ){
+  var cookieArr = document.cookie.split('; ');
+  for ( var i = 0 ; i < cookieArr.length ; i ++ ){
+    var cookieVals = cookieArr[i].split('=');
+      if ( cookieVals[0] === cookieName && cookieVals[1] ) {
+        return decodeURIComponent(cookieVals[1]);
+      }
+  }
+};
+ZFAdvLead.prototype.zfautm_gC_enc = function( cookieName ){
+  var cookieArr = document.cookie.split('; ');
+  for ( var i = 0 ; i < cookieArr.length ; i ++ ){
+    var cookieVals = cookieArr[i].split('=');
+      if ( cookieVals[0] === cookieName && cookieVals[1] ) {
+        return cookieVals[1];
+      }
+  }
+};
+ZFAdvLead.prototype.zfautm_iframeSprt = function () {
+  var zf_frame = document.getElementsByTagName("iframe");
+  for(var i = 0; i < zf_frame.length; ++i){
+    if((zf_frame[i].src).indexOf('formperma') > 0 ){
+      var zf_src = zf_frame[i].src;
+      for( var prmIdx = 0 ; prmIdx < ZFAdvLead.utmPNameArr.length ; prmIdx ++ ) {
+        var utmPm = ZFAdvLead.utmPNameArr[ prmIdx ];
+        utmPm = ( ZFAdvLead.isSameDomain && ( ZFAdvLead.utmcustPNameArr.indexOf(utmPm) == -1 ) ) ? "zf_" + utmPm : utmPm;
+        var utmPmregex = new RegExp("[?&]" + utmPm + "=");
+        if ( ! utmPmregex.test(zf_src) ) {
+          var utmVal = this.zfautm_gC_enc( ZFAdvLead.utmPNameArr[ prmIdx ] );
+          if ( typeof utmVal !== "undefined" ) {
+            if ( utmVal != "" ){
+              if(zf_src.indexOf('?') > 0){
+                zf_src = zf_src+'&'+utmPm+'='+ utmVal;
+              }else{
+                zf_src = zf_src+'?'+utmPm+'='+ utmVal;
+              }
+            }
+          }
+        }
+      }
+      if ( zf_frame[i].src.length < zf_src.length ) {
+        zf_frame[i].src = zf_src;
+      }
+    }
+  }
+};
+ZFAdvLead.prototype.zfautm_DHtmlSprt = function () {
+  var zf_formsArr = document.forms;
+  for ( var frmInd = 0 ; frmInd < zf_formsArr.length ; frmInd ++ ) {
+    var zf_form_act = zf_formsArr[frmInd].action;
+      if ( zf_form_act && zf_form_act.indexOf('formperma') > 0 ){
+        for( var prmIdx = 0 ; prmIdx < ZFAdvLead.utmPNameArr.length ; prmIdx ++ ) {
+          var utmPm = ZFAdvLead.utmPNameArr[ prmIdx ];
+          var utmVal = this.zfautm_gC( ZFAdvLead.utmPNameArr[ prmIdx ] );
+          if ( typeof utmVal !== "undefined" ) {
+            if ( utmVal != "" ) {
+              var fieldObj = zf_formsArr[frmInd][utmPm];
+            if ( fieldObj ) {
+              fieldObj.value = utmVal;
+            }
+          }
+        }
+      }
+    }
+  }
+};
+ZFAdvLead.prototype.zfautm_jsEmbedSprt = function ( id ) {
+  document.getElementById('zforms_iframe_id').removeAttribute("onload");
+  var jsEmbdFrm = document.getElementById("zforms_iframe_id");
+  var embdSrc = jsEmbdFrm.src;
+  for( var prmIdx = 0 ; prmIdx < ZFAdvLead.utmPNameArr.length ; prmIdx ++ ) {
+    var utmPm = ZFAdvLead.utmPNameArr[ prmIdx ];
+    utmPm = ( ZFAdvLead.isSameDomain && ( ZFAdvLead.utmcustPNameArr.indexOf(utmPm) == -1 ) ) ? "zf_" + utmPm : utmPm;
+    var utmVal = this.zfautm_gC_enc( ZFAdvLead.utmPNameArr[ prmIdx ] );
+    if ( typeof utmVal !== "undefined" ) {
+      if ( utmVal != "" ) {
+        if(embdSrc.indexOf('?') > 0){
+                    embdSrc = embdSrc+'&'+utmPm+'='+utmVal;
+        }else{
+            embdSrc = embdSrc+'?'+utmPm+'='+utmVal;
+        }
+      }
+    }
+  }
+  jsEmbdFrm.src = embdSrc;
+};
+var zfutm_zfAdvLead = new ZFAdvLead();
+zfutm_zfAdvLead.zfautm_ini();
+if( document.readyState == "complete" ){
+    zfutm_zfAdvLead.zfautm_iframeSprt();
+    zfutm_zfAdvLead.zfautm_DHtmlSprt();
+} else {
+  window.addEventListener('load', function (){
+        zfutm_zfAdvLead.zfautm_iframeSprt();
+        zfutm_zfAdvLead.zfautm_DHtmlSprt();
+  }, false);
+}`;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
     };
-    
-    updateCardWidth();
-    window.addEventListener('resize', updateCardWidth);
-    
-    return () => window.removeEventListener('resize', updateCardWidth);
   }, []);
+
   const clientLogos = [
     { src: '/clients/Binary.png', alt: 'Binary' },
     { src: '/clients/actualize.png', alt: 'Actualize' },
@@ -158,6 +427,14 @@ const CTRegistrationPage = () => {
     }
   ];
 
+  const testimonialStats = [
+    { label: 'Avg. satisfaction', value: '4.9/5', description: 'Across tax registration and advisory', icon: <FiStar /> },
+    { label: 'Registrations', value: '6,000+', description: 'TRNs secured without penalties', icon: <FiFileText /> },
+    { label: 'Faster turnaround', value: '48h', description: 'Typical TRN in 48 hours', icon: <FiZap /> },
+  ];
+
+  const testimonialsForGrid = testimonials.slice(0, 3);
+
   return (
     <div className="ct-registration-page">
       {/* Hero Section */}
@@ -181,27 +458,27 @@ const CTRegistrationPage = () => {
                 Get your UAE Corporate Tax registration done right the first time. FTA-approved tax agents handle your CT registration, tax filing, and ongoing compliance — so you stay penalty-free.
               </p>
               
-              <div className="hero-features">
-                <div className="feature-item">
-                  <FiShield className="feature-icon" />
-                  <span>FTA-compliant tax agents</span>
-                </div>
-                <div className="feature-item">
-                  <FiZap className="feature-icon" />
-                  <span>Fast 48-hour registration</span>
-                </div>
-                <div className="feature-item">
-                  <FiCheckCircle className="feature-icon" />
-                  <span>100% compliance guaranteed</span>
-                </div>
-              </div>
+              <ul className="hero-features" aria-label="Why choose us">
+                <li>
+                  <FiShield className="hero-features-icon" aria-hidden />
+                  <span>FTA-compliant agents</span>
+                </li>
+                <li>
+                  <FiZap className="hero-features-icon" aria-hidden />
+                  <span>48-hour registration</span>
+                </li>
+                <li>
+                  <FiCheckCircle className="hero-features-icon" aria-hidden />
+                  <span>Compliance guaranteed</span>
+                </li>
+              </ul>
               
               <div className="hero-ctas">
                 <a href="#register" className="btn-primary">
                   <span>Register Now</span>
                   <FiArrowRight className="btn-icon" />
                 </a>
-                <a href="https://wa.me/971521549572" className="btn-secondary" target="_blank" rel="noreferrer">
+                <a href="https://wa.me/971521549572" className="btn-secondary btn-whatsapp" target="_blank" rel="noreferrer">
                   Chat on WhatsApp
                 </a>
               </div>
@@ -209,26 +486,43 @@ const CTRegistrationPage = () => {
             
             <div className="hero-form-column">
               <div className="hero-form">
-                <h3 className="hero-form-title">Get Your Free Consultation</h3>
+                <h3 className="hero-form-title">Get Your Free Tax Consultation</h3>
                 <p className="hero-form-subtitle">Start your registration process today</p>
-                {/* Zoho Form Embed */}
-                <div className="zoho-form-container">
-                  <iframe
-                    aria-label='CT Registration Form'
-                    frameBorder='0'
-                    style={{ height: '500px', width: '100%', border: 'none' }}
-                    src='https://forms.zohopublic.com/YOUR_FORM_URL'
-                  ></iframe>
-                </div>
-                <p className="hero-form-disclaimer">
-                  By submitting, you agree to receive communications from Finanshels. Your data is secure and will never be shared.
-                </p>
+                <form
+                  className="hero-registration-form"
+                  action="https://forms.zohopublic.com/finanshelsllc/form/GetYourFreeConsultation1/formperma/dfkCQAWxxG7Af5rE7gRIOAip2GcR6W3qEvskjOo60sc/htmlRecords/submit"
+                  method="POST"
+                  acceptCharset="UTF-8"
+                  encType="multipart/form-data"
+                >
+                  <input type="hidden" name="zf_referrer_name" value="" />
+                  <input type="hidden" name="zf_redirect_url" value={`${window.location.origin}/thank-you`} />
+                  <input type="hidden" name="zc_gad" value="" />
+                  <input type="hidden" name="utm_source" value="" />
+                  <input type="hidden" name="utm_medium" value="" />
+                  <input type="hidden" name="utm_campaign" value="" />
+                  <input type="hidden" name="utm_term" value="" />
+                  <input type="hidden" name="utm_content" value="" />
+                  <input type="text" name="Name_First" maxLength={255} placeholder="First Name *" required />
+                  <input type="text" name="Name_Last" maxLength={255} placeholder="Last Name" />
+                  <input type="email" name="Email" maxLength={255} placeholder="Email *" required />
+                  <input type="tel" name="PhoneNumber_countrycode" maxLength={20} placeholder="Phone * (e.g. +971 00 000 0000)" required />
+                  <input type="text" name="SingleLine1" maxLength={255} placeholder="Company Name *" required />
+                  <input type="text" name="SingleLine2" maxLength={255} placeholder="Job Title" />
+                  <button type="submit" className="hero-form-submit">
+                    <span>Get Free Consultation</span>
+                    <FiArrowRight className="btn-icon" />
+                  </button>
+                  <p className="hero-form-disclaimer">
+                    By submitting, you agree to receive communications from Finanshels. Your data is secure and will never be shared.
+                  </p>
+                </form>
               </div>
             </div>
           </div>
           
           <div className="hero-trust">
-            <p className="trust-label">Trusted by 5,000+ businesses in the UAE</p>
+            <p className="trust-label">Trusted by 6,000+ businesses in the UAE</p>
             <div className="logo-marquee">
               <div className="logo-track">
                 {clientLogos.map((logo, index) => (
@@ -388,319 +682,169 @@ const CTRegistrationPage = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="pricing-section">
+      {/* Pricing Section - Redesigned */}
+      <section className="pricing-section-v2">
         <div className="container">
-          <div className="pricing-content-left">
-            <div className="section-header">
-              <span className="section-badge">TAX REGISTRATION PACKAGES</span>
-              <h2 className="section-title">
-                Affordable Plans for Every <span className="highlight">Business Size</span>
-              </h2>
-              <p className="section-description">
-                Transparent pricing. No hidden fees. 100% FTA approval guaranteed.
-              </p>
-            </div>
-            
-            <div className="pricing-alert">
-              <FiAlertCircle className="alert-icon" />
-              <div className="alert-content">
-                <span className="alert-title">Corporate Tax Registration Deadline Approaching</span>
-                <p className="alert-text">Avoid penalties up to AED 10,000. Register before the deadline.</p>
-              </div>
+          <header className="pricing-v2-header">
+            <span className="pricing-v2-badge">Tax Registration</span>
+            <h2 className="pricing-v2-title">One plan. Everything included.</h2>
+            <p className="pricing-v2-lead">
+              Transparent pricing. No hidden fees. 100% FTA approval guaranteed or money back.
+            </p>
+          </header>
+
+          <div className="pricing-v2-alert">
+            <FiAlertCircle className="pricing-v2-alert-icon" />
+            <div>
+              <strong className="pricing-v2-alert-title">Corporate Tax Registration Deadline Approaching</strong>
+              <p className="pricing-v2-alert-text">Avoid penalties up to AED 10,000. Register before the deadline.</p>
             </div>
           </div>
-          
-          <div className="pricing-card-wrapper">
-            <div className="pricing-card">
-              <div className="pricing-badge">
-                <FiAward className="badge-icon-inline" />
-                <span>Most Popular</span>
-              </div>
-              
-              <div className="pricing-header">
-                <h3 className="pricing-title">Corporate Tax Registration Package</h3>
-                <p className="pricing-subtitle">Complete FTA-compliant registration with expert support</p>
-                
-                <div className="pricing-price-wrapper">
-                  <div className="price-row">
-                    <span className="price-old">AED 599</span>
-                    <div className="discount-badge">50% OFF</div>
-                  </div>
-                  <div className="price-new-wrapper">
-                    <span className="currency">AED</span>
-                    <span className="price-new">299</span>
-                    <span className="price-period">only</span>
-                  </div>
-                  <p className="price-note">Limited time offer • Save AED 300</p>
+
+          <div className="pricing-v2-card">
+            <div className="pricing-v2-card-inner">
+              <div className="pricing-v2-main">
+                <div className="pricing-v2-name-row">
+                  <span className="pricing-v2-popular">Most chosen</span>
+                  <h3 className="pricing-v2-name">Corporate Tax Registration</h3>
                 </div>
-              </div>
-              
-              <div className="pricing-divider">
-                <span className="divider-text">What's included</span>
-              </div>
-              
-              <div className="pricing-features">
-                <ul className="features-list">
-                  <li>
-                    <div className="feature-icon-wrapper">
-                      <FiCheckCircle className="check-icon" />
-                    </div>
-                    <div className="feature-content">
-                      <span className="feature-name">CT Registration</span>
-                      <span className="feature-desc">Full FTA registration process handled</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="feature-icon-wrapper">
-                      <FiCheckCircle className="check-icon" />
-                    </div>
-                    <div className="feature-content">
-                      <span className="feature-name">SMB Relief Consultation</span>
-                      <span className="feature-desc">Maximize your tax benefits</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="feature-icon-wrapper">
-                      <FiCheckCircle className="check-icon" />
-                    </div>
-                    <div className="feature-content">
-                      <span className="feature-name">Corporate Tax Number</span>
-                      <span className="feature-desc">Get your TRN within 48 hours</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="feature-icon-wrapper">
-                      <FiCheckCircle className="check-icon" />
-                    </div>
-                    <div className="feature-content">
-                      <span className="feature-name">Compliance Checklist</span>
-                      <span className="feature-desc">Stay on track with requirements</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="feature-icon-wrapper">
-                      <FiCheckCircle className="check-icon" />
-                    </div>
-                    <div className="feature-content">
-                      <span className="feature-name">Compliance Documentation</span>
-                      <span className="feature-desc">All paperwork prepared & filed</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="feature-icon-wrapper">
-                      <FiCheckCircle className="check-icon" />
-                    </div>
-                    <div className="feature-content">
-                      <span className="feature-name">30 mins Free Tax Consultation</span>
-                      <span className="feature-desc">Expert guidance on your tax matters</span>
-                    </div>
-                  </li>
+                <div className="pricing-v2-price-block">
+                  <div className="pricing-v2-price">
+                    <span className="pricing-v2-currency">AED</span>
+                    <span className="pricing-v2-amount">299</span>
+                    <span className="pricing-v2-period">one-time</span>
+                  </div>
+                  <div className="pricing-v2-was">
+                    <span className="pricing-v2-was-line">Was AED 599</span>
+                    <span className="pricing-v2-save">Save AED 300</span>
+                  </div>
+                </div>
+                <p className="pricing-v2-desc">
+                  Complete FTA-compliant registration with expert support. TRN within 48 hours.
+                </p>
+                <a href="#register" className="pricing-v2-cta">
+                  <span>Register now</span>
+                  <FiArrowRight />
+                </a>
+                <ul className="pricing-v2-trust" aria-label="Guarantees">
+                  <li><FiCheckCircle /> 100% FTA approval or money back</li>
+                  <li><FiClock /> TRN within 48 hours</li>
                 </ul>
               </div>
-              
-              <div className="pricing-footer">
-                <a href="#register" className="pricing-cta">
-                  <span>Register Now</span>
-                  <FiArrowRight className="btn-icon" />
-                </a>
-                <p className="pricing-guarantee">
-                  <FiShield className="guarantee-icon" />
-                  <span>100% FTA Approval Guaranteed or Money Back</span>
-                </p>
+              <div className="pricing-v2-included">
+                <h4 className="pricing-v2-included-title">What&apos;s included</h4>
+                <ul className="pricing-v2-checklist">
+                  <li><FiCheckCircle className="pricing-v2-check-icon" /> CT Registration</li>
+                  <li><FiCheckCircle className="pricing-v2-check-icon" /> SMB Relief Consultation</li>
+                  <li><FiCheckCircle className="pricing-v2-check-icon" /> TRN within 48 hours</li>
+                  <li><FiCheckCircle className="pricing-v2-check-icon" /> Compliance Checklist</li>
+                  <li><FiCheckCircle className="pricing-v2-check-icon" /> Compliance Documentation</li>
+                  <li><FiCheckCircle className="pricing-v2-check-icon" /> 30 mins Free Tax Consultation</li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="testimonials-section">
+      {/* Testimonials Section - Redesigned */}
+      <section className="testimonials-v2">
         <div className="container">
-          <div className="section-header">
-            <span className="section-badge">CLIENT SUCCESS STORIES</span>
-            <h2 className="section-title">
-              Trusted by <span className="highlight">5000+ UAE Businesses</span>
-            </h2>
-            <p className="section-description">
-              Don't just take our word for it. Here's what our clients say about working with Finanshels.
+          <header className="testimonials-v2-header">
+            <span className="testimonials-v2-badge">What clients say</span>
+            <h2 className="testimonials-v2-title">Trusted by 6,000+ UAE businesses</h2>
+            <p className="testimonials-v2-lead">
+              Don&apos;t just take our word for it. Here&apos;s what our clients say about working with Finanshels.
             </p>
-          </div>
-          
-          <div className="testimonials-carousel-container">
-            <button 
-              className="testimonial-nav-btn testimonial-nav-prev"
-              onClick={() => setCurrentTestimonial((prev) => {
-                const newIndex = prev - visibleCards;
-                return newIndex < 0 ? Math.max(0, testimonials.length - visibleCards) : newIndex;
-              })}
-              aria-label="Previous testimonial"
-              disabled={currentTestimonial === 0}
-            >
-              <FiChevronLeft />
-            </button>
-            
-            <div className="testimonials-carousel">
-              <div 
-                className="testimonials-track"
-                style={{ transform: `translateX(-${currentTestimonial * cardWidth}px)` }}
-              >
-                {testimonials.map((testimonial, index) => (
-                  <div key={index} className="testimonial-card">
-                    <div className="testimonial-stars">
-                      {[...Array(5)].map((_, i) => (
-                        <FiStar key={i} className="star-icon" fill="#f16610" stroke="#f16610" />
-                      ))}
-                    </div>
-                    <p className="testimonial-quote">"{testimonial.quote}"</p>
-                    <div className="testimonial-author">
-                      <div className="author-avatar">
-                        {testimonial.avatar ? (
-                          <img src={testimonial.avatar} alt={testimonial.name} />
-                        ) : (
-                          <span>{testimonial.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}</span>
-                        )}
-                      </div>
-                      <div className="author-info">
-                        <div className="author-name">{testimonial.name}</div>
-                        <div className="author-role">{testimonial.role}</div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+          </header>
+
+          <div className="testimonials-v2-stats">
+            {testimonialStats.map((stat, index) => (
+              <div className="testimonials-v2-stat" key={`${stat.label}-${index}`}>
+                <span className="testimonials-v2-stat-icon">{stat.icon}</span>
+                <span className="testimonials-v2-stat-value">{stat.value}</span>
+                <span className="testimonials-v2-stat-label">{stat.label}</span>
+                <span className="testimonials-v2-stat-desc">{stat.description}</span>
               </div>
-            </div>
-            
-            <button 
-              className="testimonial-nav-btn testimonial-nav-next"
-              onClick={() => setCurrentTestimonial((prev) => {
-                const newIndex = prev + visibleCards;
-                const maxIndex = testimonials.length - visibleCards;
-                return newIndex > maxIndex ? 0 : newIndex;
-              })}
-              aria-label="Next testimonial"
-              disabled={currentTestimonial >= testimonials.length - visibleCards}
-            >
-              <FiChevronRight />
-            </button>
+            ))}
+          </div>
+
+          <div className="testimonials-v2-grid">
+            {testimonialsForGrid.map((testimonial) => (
+              <article key={testimonial.name} className="testimonials-v2-card">
+                <div className="testimonials-v2-stars">
+                  {[...Array(5)].map((_, i) => (
+                    <FiStar key={i} className="testimonials-v2-star" fill="#f16610" stroke="#f16610" />
+                  ))}
+                </div>
+                <blockquote className="testimonials-v2-quote">"{testimonial.quote}"</blockquote>
+                <footer className="testimonials-v2-author">
+                  <div className="testimonials-v2-avatar">
+                    {testimonial.avatar ? (
+                      <img src={testimonial.avatar} alt={testimonial.name} />
+                    ) : (
+                      <span>{testimonial.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}</span>
+                    )}
+                  </div>
+                  <div className="testimonials-v2-author-info">
+                    <cite className="testimonials-v2-name">{testimonial.name}</cite>
+                    <span className="testimonials-v2-role">{testimonial.role}</span>
+                  </div>
+                </footer>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ Section - 2 Column Grid */}
-      <section className="faq-section">
+      {/* FAQ Section - Redesigned */}
+      <section className="faq-section-v2">
         <div className="container">
-          <div className="faq-grid-layout">
-            {/* Left Side - Header */}
-            <div className="faq-header-column">
-              <span className="section-badge">FAQ</span>
-              <h2 className="section-title">
-                Tax Registration <span className="highlight">FAQs</span>
-              </h2>
-              <p className="section-description">
-                Everything you need to know about UAE Corporate Tax registration.
-              </p>
-              <div className="faq-contact-box">
-                <p className="faq-contact-text">Still have questions?</p>
-                <a href="mailto:connect@finanshels.com" className="faq-contact-link">
-                  <FiMessageCircle />
-                  <span>connect@finanshels.com</span>
-                </a>
-              </div>
-            </div>
+          <header className="faq-v2-header">
+            <span className="faq-v2-badge">FAQ</span>
+            <h2 className="faq-v2-title">Tax Registration FAQs</h2>
+            <p className="faq-v2-lead">
+              Everything you need to know about UAE Corporate Tax registration.
+            </p>
+          </header>
 
-            {/* Right Side - FAQ List */}
-            <div className="faq-list">
-            <div 
-              className={`faq-item ${openFaq === 0 ? 'faq-open' : ''}`}
-              onClick={() => setOpenFaq(openFaq === 0 ? null : 0)}
-            >
-              <div className="faq-question-wrapper">
-                <h3 className="faq-question">Who needs to register for UAE Corporate Tax?</h3>
-                <FiChevronDown className="faq-chevron" />
-              </div>
-              <div className="faq-answer-wrapper">
-                <p className="faq-answer">
-                  All UAE businesses including mainland companies, free zone entities, and foreign companies with a permanent establishment in the UAE must register for Corporate Tax. This includes LLCs, sole establishments, and branches of foreign companies.
-                </p>
-              </div>
-            </div>
-            
-            <div 
-              className={`faq-item ${openFaq === 1 ? 'faq-open' : ''}`}
-              onClick={() => setOpenFaq(openFaq === 1 ? null : 1)}
-            >
-              <div className="faq-question-wrapper">
-                <h3 className="faq-question">What is the deadline for Corporate Tax registration?</h3>
-                <FiChevronDown className="faq-chevron" />
-              </div>
-              <div className="faq-answer-wrapper">
-                <p className="faq-answer">
-                  The FTA has set specific deadlines based on your license issuance date. Late registration can result in penalties up to AED 10,000. Contact us immediately to confirm your deadline and avoid penalties.
-                </p>
-              </div>
-            </div>
-            
-            <div 
-              className={`faq-item ${openFaq === 2 ? 'faq-open' : ''}`}
-              onClick={() => setOpenFaq(openFaq === 2 ? null : 2)}
-            >
-              <div className="faq-question-wrapper">
-                <h3 className="faq-question">How long does CT registration take?</h3>
-                <FiChevronDown className="faq-chevron" />
-              </div>
-              <div className="faq-answer-wrapper">
-                <p className="faq-answer">
-                  With Finanshels, your Corporate Tax registration is typically completed within 48 hours. We prepare all required documents, submit your application to the FTA, and ensure approval on the first attempt.
-                </p>
-              </div>
-            </div>
-            
-            <div 
-              className={`faq-item ${openFaq === 3 ? 'faq-open' : ''}`}
-              onClick={() => setOpenFaq(openFaq === 3 ? null : 3)}
-            >
-              <div className="faq-question-wrapper">
-                <h3 className="faq-question">What documents are required for CT registration?</h3>
-                <FiChevronDown className="faq-chevron" />
-              </div>
-              <div className="faq-answer-wrapper">
-                <p className="faq-answer">
-                  You'll need your trade license, Emirates ID of owners/partners, MOA/AOA, passport copies, and proof of address. Our team will guide you through the exact requirements for your business type.
-                </p>
-              </div>
-            </div>
-            
-            <div 
-              className={`faq-item ${openFaq === 4 ? 'faq-open' : ''}`}
-              onClick={() => setOpenFaq(openFaq === 4 ? null : 4)}
-            >
-              <div className="faq-question-wrapper">
-                <h3 className="faq-question">What is the Corporate Tax rate in UAE?</h3>
-                <FiChevronDown className="faq-chevron" />
-              </div>
-              <div className="faq-answer-wrapper">
-                <p className="faq-answer">
-                  The standard Corporate Tax rate is 9% on taxable income exceeding AED 375,000. Income up to AED 375,000 is taxed at 0%. Qualifying Free Zone businesses may benefit from 0% on qualifying income.
-                </p>
-              </div>
-            </div>
-            
-            <div 
-              className={`faq-item ${openFaq === 5 ? 'faq-open' : ''}`}
-              onClick={() => setOpenFaq(openFaq === 5 ? null : 5)}
-            >
-              <div className="faq-question-wrapper">
-                <h3 className="faq-question">Do you handle ongoing tax compliance after registration?</h3>
-                <FiChevronDown className="faq-chevron" />
-              </div>
-              <div className="faq-answer-wrapper">
-                <p className="faq-answer">
-                  Yes! We offer comprehensive packages that include annual CT filing, quarterly VAT returns, tax planning, and ongoing compliance monitoring. Your dedicated tax advisor ensures you never miss a deadline.
-                </p>
-              </div>
-            </div>
+          <div className="faq-v2-list" role="list">
+            {[
+              { q: 'Who needs to register for UAE Corporate Tax?', a: 'All UAE businesses including mainland companies, free zone entities, and foreign companies with a permanent establishment in the UAE must register for Corporate Tax. This includes LLCs, sole establishments, and branches of foreign companies.' },
+              { q: 'What is the deadline for Corporate Tax registration?', a: 'The FTA has set specific deadlines based on your license issuance date. Late registration can result in penalties up to AED 10,000. Contact us immediately to confirm your deadline and avoid penalties.' },
+              { q: 'How long does CT registration take?', a: 'With Finanshels, your Corporate Tax registration is typically completed within 48 hours. We prepare all required documents, submit your application to the FTA, and ensure approval on the first attempt.' },
+              { q: 'What documents are required for CT registration?', a: "You'll need your trade license, Emirates ID of owners/partners, MOA/AOA, passport copies, and proof of address. Our team will guide you through the exact requirements for your business type." },
+              { q: 'What is the Corporate Tax rate in UAE?', a: 'The standard Corporate Tax rate is 9% on taxable income exceeding AED 376,000. Income up to AED 376,000 is taxed at 0%. Qualifying Free Zone businesses may benefit from 0% on qualifying income.' },
+              { q: 'Do you handle ongoing tax compliance after registration?', a: 'Yes! We offer comprehensive packages that include annual CT filing, quarterly VAT returns, tax planning, and ongoing compliance monitoring. Your dedicated tax advisor ensures you never miss a deadline.' }
+            ].map((item, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div key={idx} className={`faq-v2-item ${isOpen ? 'faq-v2-open' : ''}`} role="listitem">
+                  <button
+                    type="button"
+                    className="faq-v2-trigger"
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    aria-expanded={isOpen}
+                    aria-controls={`ct-reg-faq-answer-${idx}`}
+                  >
+                    <span className="faq-v2-number">{String(idx + 1).padStart(2, '0')}</span>
+                    <h3 className="faq-v2-question" id={`ct-reg-faq-question-${idx}`}>{item.q}</h3>
+                    <FiChevronDown className="faq-v2-chevron" aria-hidden />
+                  </button>
+                  <div id={`ct-reg-faq-answer-${idx}`} className="faq-v2-answer-wrapper" role="region" aria-labelledby={`ct-reg-faq-question-${idx}`} aria-hidden={!isOpen}>
+                    <p className="faq-v2-answer">{item.a}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
+
+          <div className="faq-v2-contact">
+            <p className="faq-v2-contact-text">Still have questions?</p>
+            <a href="mailto:connect@finanshels.com" className="faq-v2-contact-link">
+              <FiMessageCircle />
+              <span>connect@finanshels.com</span>
+            </a>
           </div>
         </div>
       </section>
@@ -739,14 +883,32 @@ const CTRegistrationPage = () => {
             
             <div className="cta-form-column">
               <div className="cta-form">
-                <form className="registration-form">
+                <form
+                  className="registration-form"
+                  action="https://forms.zohopublic.com/finanshelsllc/form/GetYourFreeConsultation1/formperma/dfkCQAWxxG7Af5rE7gRIOAip2GcR6W3qEvskjOo60sc/htmlRecords/submit"
+                  method="POST"
+                  acceptCharset="UTF-8"
+                  encType="multipart/form-data"
+                >
+                  <input type="hidden" name="zf_referrer_name" value="" />
+                  <input type="hidden" name="zf_redirect_url" value={`${window.location.origin}/thank-you`} />
+                  <input type="hidden" name="zc_gad" value="" />
+                  <input type="hidden" name="utm_source" value="" />
+                  <input type="hidden" name="utm_medium" value="" />
+                  <input type="hidden" name="utm_campaign" value="" />
+                  <input type="hidden" name="utm_term" value="" />
+                  <input type="hidden" name="utm_content" value="" />
                   <div className="form-row">
-                    <input type="text" placeholder="Your Name *" required />
-                    <input type="email" placeholder="Email Address *" required />
+                    <input type="text" name="Name_First" maxLength={255} placeholder="First Name *" required />
+                    <input type="text" name="Name_Last" maxLength={255} placeholder="Last Name" />
                   </div>
                   <div className="form-row">
-                    <input type="tel" placeholder="Phone Number *" required />
-                    <input type="text" placeholder="Company Name" />
+                    <input type="email" name="Email" maxLength={255} placeholder="Email Address *" required />
+                    <input type="tel" name="PhoneNumber_countrycode" maxLength={20} placeholder="Phone * (e.g. +971 00 000 0000)" required />
+                  </div>
+                  <div className="form-row">
+                    <input type="text" name="SingleLine1" maxLength={255} placeholder="Company Name *" required />
+                    <input type="text" name="SingleLine2" maxLength={255} placeholder="Job Title" />
                   </div>
                   <button type="submit" className="form-submit">
                     <span>Get Free Consultation</span>
